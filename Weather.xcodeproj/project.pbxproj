@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF2AB1EC231FBCF500D5965D /* CityWeatherDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AB1EB231FBCF500D5965D /* CityWeatherDetail.swift */; };
 		AF6D584C231E117000D8EC29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D584B231E117000D8EC29 /* AppDelegate.swift */; };
 		AF6D584E231E117000D8EC29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D584D231E117000D8EC29 /* SceneDelegate.swift */; };
 		AF6D5852231E117200D8EC29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6D5851231E117200D8EC29 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF2AB1EB231FBCF500D5965D /* CityWeatherDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherDetail.swift; sourceTree = "<group>"; };
 		AF6D5848231E117000D8EC29 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF6D584B231E117000D8EC29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF6D584D231E117000D8EC29 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				AF6D5875231E36D300D8EC29 /* CityList.swift */,
 				AF6D5877231E3BB300D8EC29 /* CityRow.swift */,
+				AF2AB1EB231FBCF500D5965D /* CityWeatherDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				AF6D5878231E3BB300D8EC29 /* CityRow.swift in Sources */,
 				AF6D586B231E17A200D8EC29 /* APIError.swift in Sources */,
 				AF6D586C231E17A200D8EC29 /* GenericAPIClient.swift in Sources */,
+				AF2AB1EC231FBCF500D5965D /* CityWeatherDetail.swift in Sources */,
 				AF6D5876231E36D300D8EC29 /* CityList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

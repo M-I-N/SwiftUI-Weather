@@ -8,7 +8,11 @@
 
 import Foundation
 
-struct HourlyWeather: Codable {
+struct HourlyWeather: Codable, Identifiable {
+
+    var id: Date {
+        return time
+    }
 
     var time: Date
     var temperature: Double

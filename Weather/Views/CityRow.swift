@@ -13,7 +13,7 @@ struct CityRow: View {
     @ObservedObject var city: City
     
     var body: some View {
-        NavigationLink(destination: Text(city.name)) {
+        NavigationLink(destination: CityWeatherDetail(city: city)) {
             HStack {
                 Text(city.name)
 
