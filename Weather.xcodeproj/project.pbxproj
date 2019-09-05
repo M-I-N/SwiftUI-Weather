@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF178AFE2320ED7700121FCC /* AddNewCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF178AFD2320ED7700121FCC /* AddNewCity.swift */; };
 		AF2AB1EC231FBCF500D5965D /* CityWeatherDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2AB1EB231FBCF500D5965D /* CityWeatherDetail.swift */; };
 		AF6D584C231E117000D8EC29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D584B231E117000D8EC29 /* AppDelegate.swift */; };
 		AF6D584E231E117000D8EC29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D584D231E117000D8EC29 /* SceneDelegate.swift */; };
@@ -26,9 +27,11 @@
 		AF6D5878231E3BB300D8EC29 /* CityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D5877231E3BB300D8EC29 /* CityRow.swift */; };
 		AF6D587A231E413E00D8EC29 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D5879231E413E00D8EC29 /* Double+Extension.swift */; };
 		AF6D5880231E497C00D8EC29 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6D587F231E497C00D8EC29 /* Date+Extension.swift */; };
+		AFB841B32320ADDC00B55392 /* CityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB841B22320ADDC00B55392 /* CityClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF178AFD2320ED7700121FCC /* AddNewCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCity.swift; sourceTree = "<group>"; };
 		AF2AB1EB231FBCF500D5965D /* CityWeatherDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherDetail.swift; sourceTree = "<group>"; };
 		AF6D5848231E117000D8EC29 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF6D584B231E117000D8EC29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		AF6D5877231E3BB300D8EC29 /* CityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityRow.swift; sourceTree = "<group>"; };
 		AF6D5879231E413E00D8EC29 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		AF6D587F231E497C00D8EC29 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		AFB841B22320ADDC00B55392 /* CityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				AF6D5875231E36D300D8EC29 /* CityList.swift */,
 				AF6D5877231E3BB300D8EC29 /* CityRow.swift */,
 				AF2AB1EB231FBCF500D5965D /* CityWeatherDetail.swift */,
+				AF178AFD2320ED7700121FCC /* AddNewCity.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				AF6D586E231E18CC00D8EC29 /* WeatherClient.swift */,
+				AFB841B22320ADDC00B55392 /* CityClient.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 				AF6D5866231E159300D8EC29 /* DailyWeather.swift in Sources */,
 				AF6D5880231E497C00D8EC29 /* Date+Extension.swift in Sources */,
 				AF6D5874231E34B200D8EC29 /* CityStore.swift in Sources */,
+				AF178AFE2320ED7700121FCC /* AddNewCity.swift in Sources */,
 				AF6D584E231E117000D8EC29 /* SceneDelegate.swift in Sources */,
 				AF6D586F231E18CC00D8EC29 /* WeatherClient.swift in Sources */,
 				AF6D5864231E157800D8EC29 /* HourlyWeather.swift in Sources */,
@@ -240,6 +247,7 @@
 				AF6D586B231E17A200D8EC29 /* APIError.swift in Sources */,
 				AF6D586C231E17A200D8EC29 /* GenericAPIClient.swift in Sources */,
 				AF2AB1EC231FBCF500D5965D /* CityWeatherDetail.swift in Sources */,
+				AFB841B32320ADDC00B55392 /* CityClient.swift in Sources */,
 				AF6D5876231E36D300D8EC29 /* CityList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

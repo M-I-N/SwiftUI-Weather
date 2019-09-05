@@ -8,7 +8,7 @@
 
 import Foundation
 
-class City: ObservableObject, Identifiable {
+class City: ObservableObject, Identifiable, Decodable, Equatable {
     let name: String
     let latitude: Double
     let longitude: Double
@@ -20,6 +20,19 @@ class City: ObservableObject, Identifiable {
         self.name = name
         self.latitude = latitude
         self.longitude = longitude
+    }
+
+    required init(from decoder: Decoder) throws {
+        let cityResponse = try CityEndpointResponse(from: decoder)
+        name = cityResponse.result.name
+        latitude = cityResponse.result.geometry.location.lat
+        longitude = cityResponse.result.geometry.location.lng
+    }
+
+    static func == (lhs: City, rhs: City) -> Bool {
+        return lhs.name == rhs.name
+            && lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude
     }
 
     func fetchWeather() {

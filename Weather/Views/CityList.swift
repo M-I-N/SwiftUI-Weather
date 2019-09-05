@@ -37,7 +37,7 @@ struct CityList: View {
             .navigationBarTitle("Weather")
             .navigationBarItems(leading: EditButton(), trailing: self.addButton)
             .sheet(isPresented: self.$isAddingCity) {
-                Text("Add New City View")
+                AddNewCity().environmentObject(self.cityStore)
             }
         }
     }

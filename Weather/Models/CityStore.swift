@@ -9,5 +9,38 @@
 import Foundation
 
 class CityStore: ObservableObject {
-    @Published var cities = [City(name: "Dhaka", latitude: 23.810331, longitude: 90.412521), City(name: "Narsingdi", latitude: 24.134378, longitude: 90.786003), City(name: "Sylhet", latitude: 24.894930, longitude: 91.868706)]
+    @Published var cities = [City]()
+    @Published var predictedCities = [CityPredictionResponse.Prediction]()
+
+    private let cityClient = CityClient()
+
+    func fetch(searchString: String) {
+        cityClient.fetchCitiesPrediction(for: searchString) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let predictions):
+                    self.predictedCities = predictions
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+
+    func fetchCity(placeID: String) {
+        cityClient.fetchCity(for: placeID) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                switch result {
+                case .success(let city):
+                    if !self.cities.contains(city) {
+                        self.cities.append(city)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
 }
