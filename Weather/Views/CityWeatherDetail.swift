@@ -14,19 +14,20 @@ struct CityWeatherDetail: View {
 
     var body: some View {
         List {
-            Section(header: Text("Now")) {
-                if city.weather != nil {
+            if city.weather != nil {
+                Section(header: Text("Now")) {
                     NowWeatherView(weather: city.weather!.current)
                 }
-            }
-            Section(header: Text("Hourly")) {
-                if city.weather != nil {
+                Section(header: Text("Hourly")) {
                     HourlyWeatherView(hours: city.weather!.hours)
                     .listRowInsets(EdgeInsets())
                 }
+                Section(header: Text("Weekly")) {
+                    WeeklyWeatherView(week: city.weather!.week)
+                }
             }
         }
-        .navigationBarTitle(city.name)
+        .navigationBarTitle(Text(city.name), displayMode: .inline)
     }
 }
 
@@ -75,6 +76,65 @@ struct HourlyWeatherView: View {
 //            .background(Color.purple)
         }
 
+    }
+
+}
+
+struct WeeklyWeatherView: View {
+
+    let week: Weather.List<DailyWeather>
+
+    var body: some View {
+        ForEach(week.list) { item in
+            WeeklyWeatherItem(weather: item)
+        }
+    }
+
+    struct WeeklyWeatherItem: View {
+
+        let weather: DailyWeather
+
+        var body: some View {
+            ZStack {
+                HStack {
+                    Text(weather.time.formattedDay)
+                        .font(.subheadline)
+                    Spacer()
+                    MinMaxTemparatureView(minTemperature: weather.minTemperature, maxTemperature: weather.maxTemperature)
+                }
+                HStack {
+                    Spacer()
+                    weather.icon.image
+                    .imageScale(.large)
+                    Spacer()
+                }
+            }
+        }
+
+        struct MinMaxTemparatureView: View {
+
+            let minTemperature: Double
+            let maxTemperature: Double
+
+            var body: some View {
+                HStack(spacing: 20) {
+                    VStack(alignment: .trailing) {
+                        Text("min")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                        Text(minTemperature.formattedTemperature)
+                            .font(.headline)
+                    }
+                    VStack(alignment: .trailing) {
+                        Text("max")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                        Text(maxTemperature.formattedTemperature)
+                            .font(.headline)
+                    }
+                }
+            }
+        }
     }
 
 }
