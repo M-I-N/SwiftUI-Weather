@@ -19,17 +19,18 @@ struct AddNewCity: View {
             List {
                 Section {
                     TextField("Search City", text: $search, onEditingChanged: { _ in
-                        self.cityStore.fetch(searchString: self.search)
+                        self.cityStore.fetchCities(search: self.search)
+                        self.search = ""
                     })
                 }
                 if cityStore.predictedCities.count > 0 {
                     Section(header: Text("Cities matching searched keyword")) {
                         ForEach(cityStore.predictedCities) { predictedCity in
                             Button(action: {
-                                self.cityStore.fetchCity(placeID: predictedCity.placeID)
+                                self.cityStore.insertNew(city: predictedCity)
                                 self.presentationMode.wrappedValue.dismiss()
                             }) {
-                                Text(predictedCity.description)
+                                Text(predictedCity.name)
                             }
                         }
                     }

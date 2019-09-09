@@ -30,8 +30,8 @@ struct CityList: View {
                     ForEach(cityStore.cities) { city in
                         CityRow(city: city)
                     }
-                    .onDelete { self.cityStore.cities.remove(atOffsets: $0) }
-                    .onMove { self.cityStore.cities.move(fromOffsets: $0, toOffset: $1) }
+                    .onDelete { self.cityStore.removeCities(at: $0) }
+                    .onMove { self.cityStore.moveCities(from: $0, to: $1) }
                 }
             }
             .navigationBarTitle("Weather")

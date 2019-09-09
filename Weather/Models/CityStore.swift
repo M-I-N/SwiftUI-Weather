@@ -9,18 +9,22 @@
 import Foundation
 
 class CityStore: ObservableObject {
-    @Published var cities = [City]()
-    @Published var predictedCities = [CityPredictionResponse.Prediction]()
+    @Published private (set) var cities = [City]()
+    @Published private (set) var predictedCities = [City]()
 
     private let cityClient = CityClient()
 
-    func fetch(searchString: String) {
-        cityClient.fetchCitiesPrediction(for: searchString) { [weak self] result in
+    func fetchCities(search: String) {
+        guard !search.isEmpty else {
+            predictedCities = []
+            return
+        }
+        cityClient.fetchCitiesPrediction(for: search) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
-                case .success(let predictions):
-                    self.predictedCities = predictions
+                case .success(let cities):
+                    self.predictedCities = cities
                 case .failure(let error):
                     print(error)
                 }
@@ -28,19 +32,21 @@ class CityStore: ObservableObject {
         }
     }
 
-    func fetchCity(placeID: String) {
-        cityClient.fetchCity(for: placeID) { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                switch result {
-                case .success(let city):
-                    if !self.cities.contains(city) {
-                        self.cities.append(city)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
+    func insertNew(city: City) {
+        if !cities.contains(city) {
+            cities.append(city)
         }
     }
+
+    func removeCities(at offsets: IndexSet) {
+        cities.remove(atOffsets: offsets)
+    }
+
+    func moveCities(from offsets: IndexSet, to offset: Int) {
+        cities.move(fromOffsets: offsets, toOffset: offset)
+    }
+}
+
+class Person: Decodable {
+    let name: String
 }

@@ -22,11 +22,18 @@ class City: ObservableObject, Identifiable, Decodable, Equatable {
         self.longitude = longitude
     }
 
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case latitude = "lat"
+        case longitude = "lon"
+        case weather
+    }
+
     required init(from decoder: Decoder) throws {
-        let cityResponse = try CityEndpointResponse(from: decoder)
-        name = cityResponse.result.name
-        latitude = cityResponse.result.geometry.location.lat
-        longitude = cityResponse.result.geometry.location.lng
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        latitude = try container.decode(Double.self, forKey: .latitude)
+        longitude = try container.decode(Double.self, forKey: .longitude)
     }
 
     static func == (lhs: City, rhs: City) -> Bool {
